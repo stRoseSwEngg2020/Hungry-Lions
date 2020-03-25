@@ -1,4 +1,5 @@
 
+import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
 
 /*
@@ -41,16 +42,16 @@ public class CreateAccount extends javax.swing.JFrame {
         RegisterNewUser = new javax.swing.JButton();
         Username = new javax.swing.JLabel();
         Password = new javax.swing.JLabel();
-        jPasswordField3 = new javax.swing.JPasswordField();
+        EnterPassword = new javax.swing.JPasswordField();
         RetypePassword = new javax.swing.JLabel();
-        jPasswordField4 = new javax.swing.JPasswordField();
+        EnterPasswordAgain = new javax.swing.JPasswordField();
         FirstNameEntry = new javax.swing.JTextField();
         LastNameEntry = new javax.swing.JTextField();
         UsernameEntry = new javax.swing.JTextField();
         FirstName = new javax.swing.JLabel();
         EmailEntry = new javax.swing.JTextField();
         BirthDate = new javax.swing.JLabel();
-        dateChooserCombo2 = new datechooser.beans.DateChooserCombo();
+        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -149,6 +150,8 @@ public class CreateAccount extends javax.swing.JFrame {
         BirthDate.setForeground(new java.awt.Color(255, 255, 255));
         BirthDate.setText("Birth Date");
 
+        datePicker1.setBackground(new java.awt.Color(204, 204, 204));
+
         javax.swing.GroupLayout RegisterAccountBackgroundLayout = new javax.swing.GroupLayout(RegisterAccountBackground);
         RegisterAccountBackground.setLayout(RegisterAccountBackgroundLayout);
         RegisterAccountBackgroundLayout.setHorizontalGroup(
@@ -162,72 +165,77 @@ public class CreateAccount extends javax.swing.JFrame {
                             .addComponent(RegisterNewUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(RegisterAccountBackgroundLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(RegisterAccountBackgroundLayout.createSequentialGroup()
-                                .addComponent(FirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(FirstNameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(RegisterAccountBackgroundLayout.createSequentialGroup()
-                                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(RegisterAccountBackgroundLayout.createSequentialGroup()
-                                    .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(LastName)
-                                        .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(UsernameEntry)
-                                        .addComponent(LastNameEntry))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegisterAccountBackgroundLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(EnterPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(RegisterAccountBackgroundLayout.createSequentialGroup()
                                 .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(LastName)
+                                    .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(UsernameEntry)
+                                    .addComponent(LastNameEntry)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegisterAccountBackgroundLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegisterAccountBackgroundLayout.createSequentialGroup()
+                                .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(RetypePassword)
-                                    .addComponent(BirthDate))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(RegisterAccountBackgroundLayout.createSequentialGroup()
-                                .addComponent(Email)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPasswordField4)
-                            .addComponent(EmailEntry)
-                            .addComponent(dateChooserCombo2, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))))
+                                    .addComponent(BirthDate)
+                                    .addComponent(Email))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(EnterPasswordAgain, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                                    .addComponent(EmailEntry)
+                                    .addComponent(datePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegisterAccountBackgroundLayout.createSequentialGroup()
+                                .addComponent(FirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(FirstNameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         RegisterAccountBackgroundLayout.setVerticalGroup(
             RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RegisterAccountBackgroundLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(46, 46, 46)
                 .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FirstName)
-                    .addComponent(FirstNameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FirstNameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LastNameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LastName, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
+                .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LastName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(RegisterAccountBackgroundLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LastNameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(UsernameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Username))
+                .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Username)
+                    .addGroup(RegisterAccountBackgroundLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(UsernameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Password)
-                    .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(RegisterAccountBackgroundLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(EnterPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23)
                 .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RetypePassword)
-                    .addComponent(jPasswordField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EnterPasswordAgain, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RetypePassword))
                 .addGap(18, 18, 18)
-                .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EmailEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Email))
+                .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Email)
+                    .addGroup(RegisterAccountBackgroundLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(EmailEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(dateChooserCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BirthDate))
+                .addGroup(RegisterAccountBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BirthDate)
+                    .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(RegisterNewUser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -274,7 +282,16 @@ public class CreateAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_GoBackToLoginAreaActionPerformed
 
     private void RegisterNewUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegisterNewUserMouseClicked
+        String firstName=FirstNameEntry.getText();
+        String lastName=LastNameEntry.getText();
+        String username=UsernameEntry.getText();
+        String emailAddress=EmailEntry.getText();
+        String pass=String.valueOf(EnterPassword.getPassword());
+        String retypePass=String.valueOf(EnterPasswordAgain.getPassword());
         
+        SimpleDateFormat date= new SimpleDateFormat("DD-MM-YYYY");
+        
+        String DOB=date.format(datePicker1.getDate());
     }//GEN-LAST:event_RegisterNewUserMouseClicked
 
     /**
@@ -317,6 +334,8 @@ public class CreateAccount extends javax.swing.JFrame {
     private javax.swing.JLabel CloseRegisterAccountForm;
     private javax.swing.JLabel Email;
     private javax.swing.JTextField EmailEntry;
+    private javax.swing.JPasswordField EnterPassword;
+    private javax.swing.JPasswordField EnterPasswordAgain;
     private javax.swing.JLabel FirstName;
     private javax.swing.JTextField FirstNameEntry;
     private javax.swing.JButton GoBackToLoginArea;
@@ -330,9 +349,7 @@ public class CreateAccount extends javax.swing.JFrame {
     private javax.swing.JLabel RetypePassword;
     private javax.swing.JLabel Username;
     private javax.swing.JTextField UsernameEntry;
-    private datechooser.beans.DateChooserCombo dateChooserCombo2;
+    private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField3;
-    private javax.swing.JPasswordField jPasswordField4;
     // End of variables declaration//GEN-END:variables
 }
