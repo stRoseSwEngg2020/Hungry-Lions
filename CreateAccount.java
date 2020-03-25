@@ -1,6 +1,11 @@
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -292,6 +297,29 @@ public class CreateAccount extends javax.swing.JFrame {
         SimpleDateFormat date= new SimpleDateFormat("DD-MM-YYYY");
         
         String DOB=date.format(datePicker1.getDate());
+        
+        //Interface PreparedStatement interface executes a precomplied SQL Statement
+        PreparedStatement sqlStatement;
+        String sqlQuery="INSERT INTO 'TreasureHuntUsers'('first_Name','last_Name','username','email','username_Password','birthday')VALUES(?,?,?,?,?,?)";
+        
+        try {
+            sqlStatement = ConnectionOfDatabase.getConnection().prepareStatement(sqlQuery);
+            sqlStatement.setString(1,firstName);
+            sqlStatement.setString(2,lastName);
+            sqlStatement.setString(3,username);
+            sqlStatement.setString(4,emailAddress);
+            sqlStatement.setString(5,pass);
+            sqlStatement.setString(6,DOB);
+            
+           //executeUpdate method returns the number of rows affected by the executed query
+           if (sqlStatement.executeUpdate()>0)
+           {
+               JOptionPane.showMessageDialog(null,"New User Added.");
+           }
+        } catch (SQLException ex) {
+            Logger.getLogger(CreateAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }//GEN-LAST:event_RegisterNewUserMouseClicked
 
     /**
