@@ -1,6 +1,6 @@
 import java.util.*;
 public class TreasureHunt {
-	
+	//LAST UPDATED 3/31/20
 	public static String[][] makeGrid(int row, int col, String difficulty) {
 		String[][] grid = new String[row][col];
 		
@@ -73,7 +73,6 @@ public class TreasureHunt {
 				goodPlace = true;
 			}
 		}
-		
 		return grid;
 	}
 	
@@ -98,8 +97,7 @@ public class TreasureHunt {
 			HP = HP * 2;
 			moves = Math.round(moves / 2);
 			SCORE = 800 + HP - moves;
-		}
-		
+		}	
 		return SCORE;
 	}
 	
@@ -136,7 +134,6 @@ public class TreasureHunt {
 			//|     |     |     |     |     |
 			//+-----+-----+-----+-----+-----+
 		}
-		
 	}
 	
 	public static int StartGame(int row, int col, int level, String difficulty) {
@@ -146,6 +143,7 @@ public class TreasureHunt {
 		int plrposB = 0;
 		boolean TrezFound = false;
 		boolean GameOver = false;
+		boolean PlrQuit = false;
 		int SCORE = 0;
 		Scanner keyboard = new Scanner(System.in);
 		
@@ -164,8 +162,9 @@ public class TreasureHunt {
 			grid = makeGrid(row, col, difficulty);
 		}
 		
+		System.out.print("\n\n");
 	
-		while (GameOver == false && TrezFound == false) {
+		while (GameOver == false && TrezFound == false && PlrQuit == false) {
 			//CHECKS & PRIORITY:
 			//0 - Input is valid
 			//1 - The player stepped out of bounds (handle exception)
@@ -190,7 +189,6 @@ public class TreasureHunt {
 					}
 				}
 			}
-				
 			
 			//move the player depending on their input, enter 'quit' to return to main menu
 			System.out.print("\n");
@@ -207,8 +205,9 @@ public class TreasureHunt {
 						System.out.println("You triggered a mine! -5 HP");
 						HP -= 5;
 						if (HP <= 0) {
-							System.out.print("You exploded! (*) Game Over!\n Press Enter to retrun to the menu.");
-							String failure = keyboard.nextLine();
+							System.out.println("You exploded! (*) You lose some Points!");
+							System.out.print("Press Enter to advance.");
+							String complete = keyboard.nextLine();
 							GameOver = true;
 						} else {
 							grid[plrposA-1][plrposB] = "☻";
@@ -226,8 +225,6 @@ public class TreasureHunt {
 					}
 				}
 				catch(ArrayIndexOutOfBoundsException e){
-					//plrposA -= 1;
-					//grid[plrposA][plrposB] = "☻";
 					System.out.println("It's too dangerous to leave the grid!");
 				}
 			}
@@ -244,8 +241,9 @@ public class TreasureHunt {
 						System.out.println("You triggered a mine! -5 HP");
 						HP -= 5;
 						if (HP <= 0) {
-							System.out.print("You exploded! (*) Game Over!\n Press Enter to retrun to the menu.");
-							String failure = keyboard.nextLine();
+							System.out.println("You exploded! (*) You lose some Points!");
+							System.out.print("Press Enter to advance.");
+							String complete = keyboard.nextLine();
 							GameOver = true;
 						} else {
 							grid[plrposA+1][plrposB] = "☻";
@@ -263,8 +261,6 @@ public class TreasureHunt {
 					}
 				}
 				catch(ArrayIndexOutOfBoundsException e){
-					//plrposA -= 1;
-					//grid[plrposA][plrposB] = "☻";
 					System.out.println(">CAUTION!< It's too dangerous to leave the grid!");
 				}
 			}	
@@ -281,8 +277,9 @@ public class TreasureHunt {
 						System.out.println("You triggered a mine! -5 HP");
 						HP -= 5;
 						if (HP <= 0) {
-							System.out.print("You exploded! (*) Game Over!\n Press Enter to retrun to the menu.");
-							String failure = keyboard.nextLine();
+							System.out.println("You exploded! (*) You lose some Points!");
+							System.out.print("Press Enter to advance.");
+							String complete = keyboard.nextLine();
 							GameOver = true;
 						} else {
 							grid[plrposA][plrposB+1] = "☻";
@@ -300,8 +297,6 @@ public class TreasureHunt {
 					}
 				}
 				catch(ArrayIndexOutOfBoundsException e){
-					//plrposA -= 1;
-					//grid[plrposA][plrposB] = "☻";
 					System.out.println(">CAUTION!< It's too dangerous to leave the grid!");
 				}
 			}
@@ -318,8 +313,9 @@ public class TreasureHunt {
 						System.out.println("You triggered a mine! -5 HP");
 						HP -= 5;
 						if (HP <= 0) {
-							System.out.print("You exploded! (*) Game Over!\n Press Enter to return to the menu.");
-							String failure = keyboard.nextLine();
+							System.out.println("You exploded! (*) You lose some Points!");
+							System.out.print("Press Enter to advance.");
+							String complete = keyboard.nextLine();
 							GameOver = true;
 						} else {
 							grid[plrposA][plrposB-1] = "☻";
@@ -337,21 +333,18 @@ public class TreasureHunt {
 					}
 				}
 				catch(ArrayIndexOutOfBoundsException e){
-					//plrposA -= 1;
-					//grid[plrposA][plrposB] = "☻";
 					System.out.println(">CAUTION!< It's too dangerous to leave the grid!");
 				}
 			}
 			
 			if (dir.equals("quit")) {
-				System.out.println("NOTE: Your score will NOT be saved.");
+				System.out.println("By quitting, you don't win any points from this level.");
 				System.out.print("Are you sure?(y/n): ");
 				String confirm = keyboard.nextLine().toLowerCase();
 				if (confirm.equals("y")) {
-					GameOver = true;
+					PlrQuit = true;
 					break;
 				}
-				
 			}
 		}
 		
@@ -360,7 +353,23 @@ public class TreasureHunt {
 			return SCORE;
 		}
 		if (GameOver == true) {
-			return 0;
+			if (difficulty.equals("easy")) {
+				SCORE = CalculateScore(moves, HP, difficulty) -100;
+				System.out.println("Level Score: " + SCORE);
+			}
+			if (difficulty.equals("medium")) {
+				SCORE = CalculateScore(moves, HP, difficulty) -250;
+				System.out.println("Level Score: " + SCORE);
+			}
+			if (difficulty.equals("hard")) {
+				SCORE = CalculateScore(moves, HP, difficulty) -400;
+				System.out.println("Level Score: " + SCORE);
+			}
+			return SCORE;
+		}
+		if (PlrQuit == true) {
+			SCORE = 0;
+			return SCORE;
 		}
 		System.out.println("We're sorry, something went wrong.");
 		return 0;
@@ -372,10 +381,11 @@ public class TreasureHunt {
 		String choice = "";
 		Scanner keyboard = new Scanner(System.in);
 		int Scorelvl1 = 1;//default values
-		int Scorelvl2 = 2;
-		int Scorelvl3 = 3;
+		int Scorelvl2 = 1;
+		int Scorelvl3 = 1;
+		int TotalScore = 0;
 		
-		while (true){
+		do {
 			System.out.println("\t**Treasure Hunt!**");
 			System.out.println("-Select a Number-");
 			System.out.println("1: PLAY\n2: TUTORIAL\n3: END");
@@ -383,6 +393,7 @@ public class TreasureHunt {
 			choice = keyboard.nextLine();
 
 			if (choice.equals("1")) {
+				TotalScore = 0;
 				System.out.println("\nSelect Difficulty: ");
 				System.out.println("1: EASY\n2: MEDIUM\n3: HARD");
 				int diffi = keyboard.nextInt();
@@ -394,12 +405,12 @@ public class TreasureHunt {
 							System.out.println("\n(!!)FINAL LEVEL(!!)");
 							Scorelvl3 = StartGame(5,6,3, "easy");
 							if (Scorelvl3 != 0) {
-								System.out.println("\n\n\tYOU WIN! ☻[$][$][$]\n");
-								int TotalScore = Scorelvl1 + Scorelvl2 + Scorelvl3;
-								System.out.println("Your score: " + TotalScore);
+								System.out.println("\n\n\tGAME OVER!\n");
 							}
 						}
 					}
+					TotalScore = Scorelvl1 + Scorelvl2 + Scorelvl3;
+					System.out.println("Final Score: " + TotalScore + "\n\n");
 				}
 				
 				if (diffi == 2) {
@@ -410,12 +421,12 @@ public class TreasureHunt {
 							System.out.println("\n(!!)FINAL LEVEL(!!)");
 							Scorelvl3 = StartGame(6,7,3, "medium");
 							if (Scorelvl3 != 0) {
-								System.out.println("\n\n\tYOU WIN! ☻[$][$][$]\n");
-								int TotalScore = Scorelvl1 + Scorelvl2 + Scorelvl3;
-								System.out.println("Your score: " + TotalScore);
+								System.out.println("\n\n\tGAME OVER!\n");
 							}
 						}
 					}
+					TotalScore = Scorelvl1 + Scorelvl2 + Scorelvl3;
+					System.out.println("Final Score: " + TotalScore + "\n\n");
 				}
 				
 				if (diffi == 3) {
@@ -426,12 +437,12 @@ public class TreasureHunt {
 							System.out.println("\n(!!)FINAL LEVEL(!!)");
 							Scorelvl3 = StartGame(7,8,3, "hard");
 							if (Scorelvl3 != 0) {
-								System.out.println("\n\n\tYOU WIN! ☻[$][$][$]\n");
-								int TotalScore = Scorelvl1 + Scorelvl2 + Scorelvl3;
-								System.out.println("Your score: " + TotalScore);
+								System.out.println("\n\n\tGAME OVER!\n");
 							}
 						}
 					}
+					TotalScore = Scorelvl1 + Scorelvl2 + Scorelvl3;
+					System.out.println("Final Score: " + TotalScore + "\n\n");
 				}
 				
 			} else if (choice.equals("2")) {
@@ -443,15 +454,16 @@ public class TreasureHunt {
 						"* mines are scattered all over the grid and are invisible to you.  You will lose HP if you hit one.\n" + 
 						"A mine space turns into a free space after you land on it.\n" + 
 						"[  ] marks a free space.  You can traverse these without losing health.\n" + 
-						"[$] marks where the treasure is hidden.  This space is also invisible. THE TREASURE WONT BE HIDDEN IN A FREE SPACE\n" + 
+						"[$] the treasure is hidden, so the space it is in is invisible. THE TREASURE WONT BE HIDDEN IN A FREE SPACE\n" + 
 						"Enter 'north', 'south', 'east', or 'west' to move.  You can also enter 'w', 's', 'd', or 'a' to move in the respective direction.\n" +
-						"Enter 'quit' to stop playing and return to the menu.  Warning: Your score WILL NOT be saved!");
-				
+						"Enter 'quit' to stop playing and return to the menu. You will lose points if you do this!\n\n");
 				}
 			if (choice.equals("3")) {
 				break;
 			}
-		}
+		} while (true);
+
 		System.out.print("Thanks for Playing! ☻[$]");
 	}
 }
+  
