@@ -1,6 +1,37 @@
+package TH;
 import java.util.*;
 public class TreasureHunt {
-	//LAST UPDATED 3/31/20
+	//LAST UPDATED 4/11/20
+	private String Uname;
+	private String difficulty;
+	private int score;
+	
+	
+	public TreasureHunt(String Uname, String difficulty, int score) {
+		this.Uname = Uname;
+		this.difficulty = difficulty;
+		this.score = score;
+	}
+	
+	public void setUname(String Uname) {
+		this.Uname = Uname;
+	}
+	public String getUname() {
+		return Uname;
+	}
+	public void setDifficulty(String difficulty) {
+		this.difficulty = difficulty;
+	}
+	public String getDifficulty() {
+		return difficulty;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	public int getScore() {
+		return score;
+	}
+	
 	public static String[][] makeGrid(int row, int col, String difficulty) {
 		String[][] grid = new String[row][col];
 		
@@ -184,7 +215,7 @@ public class TreasureHunt {
 					System.out.print("Type a Direction to move(north, south, east, or west / w, a, s, or d): ");
 					dir = keyboard.nextLine().toLowerCase();
 					if (dir.equals("north") || dir.equals("south") || dir.equals("easy") || dir.equals("west") || 
-							dir.equals("w") || dir.equals("a") || dir.equals("s") || dir.equals("d")) {
+							dir.equals("w") || dir.equals("a") || dir.equals("s") || dir.equals("d") || dir.equals("quit")) {
 						break;
 					}
 				}
@@ -373,97 +404,7 @@ public class TreasureHunt {
 		}
 		System.out.println("We're sorry, something went wrong.");
 		return 0;
-	} 
-		
-		 
-	
-	public static void main(String[] args) {
-		String choice = "";
-		Scanner keyboard = new Scanner(System.in);
-		int Scorelvl1 = 1;//default values
-		int Scorelvl2 = 1;
-		int Scorelvl3 = 1;
-		int TotalScore = 0;
-		
-		do {
-			System.out.println("\t**Treasure Hunt!**");
-			System.out.println("-Select a Number-");
-			System.out.println("1: PLAY\n2: TUTORIAL\n3: END");
-			System.out.print(">");
-			choice = keyboard.nextLine();
-
-			if (choice.equals("1")) {
-				TotalScore = 0;
-				System.out.println("\nSelect Difficulty: ");
-				System.out.println("1: EASY\n2: MEDIUM\n3: HARD");
-				int diffi = keyboard.nextInt();
-				if (diffi == 1) {
-					Scorelvl1 = StartGame(5,5,1, "easy");
-					if (Scorelvl1 != 0) {
-						Scorelvl2 = StartGame(5,5,2, "easy");
-						if (Scorelvl2 != 0) {
-							System.out.println("\n(!!)FINAL LEVEL(!!)");
-							Scorelvl3 = StartGame(5,6,3, "easy");
-							if (Scorelvl3 != 0) {
-								System.out.println("\n\n\tGAME OVER!\n");
-							}
-						}
-					}
-					TotalScore = Scorelvl1 + Scorelvl2 + Scorelvl3;
-					System.out.println("Final Score: " + TotalScore + "\n\n");
-				}
-				
-				if (diffi == 2) {
-					Scorelvl1 = StartGame(6,6,1, "medium");
-					if (Scorelvl1 != 0) {
-						Scorelvl2 = StartGame(6,6,2, "medium");
-						if (Scorelvl2 != 0) {
-							System.out.println("\n(!!)FINAL LEVEL(!!)");
-							Scorelvl3 = StartGame(6,7,3, "medium");
-							if (Scorelvl3 != 0) {
-								System.out.println("\n\n\tGAME OVER!\n");
-							}
-						}
-					}
-					TotalScore = Scorelvl1 + Scorelvl2 + Scorelvl3;
-					System.out.println("Final Score: " + TotalScore + "\n\n");
-				}
-				
-				if (diffi == 3) {
-					Scorelvl1 = StartGame(7,7,1, "hard");
-					if (Scorelvl1 != 0) {
-						Scorelvl2 = StartGame(7,7,2, "hard");
-						if (Scorelvl2 != 0) {
-							System.out.println("\n(!!)FINAL LEVEL(!!)");
-							Scorelvl3 = StartGame(7,8,3, "hard");
-							if (Scorelvl3 != 0) {
-								System.out.println("\n\n\tGAME OVER!\n");
-							}
-						}
-					}
-					TotalScore = Scorelvl1 + Scorelvl2 + Scorelvl3;
-					System.out.println("Final Score: " + TotalScore + "\n\n");
-				}
-				
-			} else if (choice.equals("2")) {
-				System.out.println("\n\nTUTUROIAL: \n" + 
-						"You are an explorer trying to find long lost treasure underground.  \n" + 
-						"You must traverse a 2-D grid until you find the treasure or run out of health points.  \n" + 
-						"You start each level with 100 HP.\n" + 
-						"☻ marks where you are currently standing on the grid\n" + 
-						"* mines are scattered all over the grid and are invisible to you.  You will lose HP if you hit one.\n" + 
-						"A mine space turns into a free space after you land on it.\n" + 
-						"[  ] marks a free space.  You can traverse these without losing health.\n" + 
-						"[$] the treasure is hidden, so the space it is in is invisible. THE TREASURE WONT BE HIDDEN IN A FREE SPACE\n" + 
-						"Enter 'north', 'south', 'east', or 'west' to move.  You can also enter 'w', 's', 'd', or 'a' to move in the respective direction.\n" +
-						"Enter 'quit' to stop playing and return to the menu. You will lose points if you do this!\n\n");
-				}
-			if (choice.equals("3")) {
-				break;
-			}
-		} while (true);
-
-		System.out.print("Thanks for Playing! ☻[$]");
 	}
+		
 }
   
