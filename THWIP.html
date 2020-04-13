@@ -1,0 +1,151 @@
+<html>
+<head>
+<title>Treasure Hunt - Easy Mode</title>
+<script>
+	var easyGrid = 
+   [['*', '*', '*', '*', '*'],
+  	['*', '*', '*', '*', '*'],
+  	['*', '*', '*', '*', '*'],
+  	['*', '*', '*', '*', '*'],
+  	['*', '*', '*', '*', '*']];
+	var plrposR = 2;
+	var plrposC = 2;
+	
+function Begin(easyGrid){
+  Crlevel = document.getElementById('level');
+  Crlevel.value = parseInt(Crlevel.value) + 1;
+  document.getElementById("health").innerHTML = 100;
+  document.getElementById("moves").innerHTML = 0;
+  
+		
+	for (var p = 0; p < 5; p++) {
+	  for (var q = 0; q < 5; q++) {
+			document.getElementById(p + "-" + q).innerHTML = "*";
+			}
+		}
+  
+  for (var g = 0; g < 3; g++) {
+				var FPA = Math.floor(Math.random() * 5);
+				var FPB = Math.floor(Math.random() * 5);
+				
+				easyGrid[FPA][FPB] = '[ ]';
+        easyGrid[FPA][FPB+1] = '[ ]';
+        easyGrid[FPA+1][FPB] = '[ ]';
+        easyGrid[FPA+1][FPB+1] = '[ ]';
+			}
+			easyGrid[2][2] = "☻";
+  
+  var goodPlace = false;
+		while (goodPlace == false) {
+			var TrezA = Math.floor(Math.random() * 5);
+			var TrezB = Math.floor(Math.random() * 5);
+			
+			if (easyGrid[TrezA][TrezB] == "*") {
+				easyGrid[TrezA][TrezB] = "[$]";
+				goodPlace = true;
+			}
+		}
+  
+  for (var p = 0; p < 5; p++) {
+	  for (var q = 0; q < 5; q++) {
+				document.getElementById(p + "-" + q).innerHTML = easyGrid[p][q];
+			}
+		}
+  
+  button = document.getElementById('begin');
+  button.parentNode.removeChild(button);
+}
+
+function goNorth(easyGrid, plrposR, plrposC){
+	if (plrposC == 0){
+		alert("/!\ CAUTION: Do not leave the grid!");
+	} else{
+		easyGrid[plrposR][plrposC] = "[ ]";
+		document.getElementById(plrposR + "-" + plrposC).innerHTML = "[ ]";
+		if (easyGrid[plrposR][plrposC-1] = "[$]"){
+			document.getElementById(plrposR + "-" + (plrposC-1)).innerHTML = "[$]";
+			Crmoves = document.getElementById('moves');
+			Crmoves.value = parseInt(Crmoves.value) + 1;
+			alert("Treasure Found! Level Complete!");
+		}
+		if (easyGrid[plrposR][plrposC-1] = "*"){
+			Crhealth = document.getElementById('health');
+  		Crhealth.value = parseInt(Crhealth.value) - 5;
+			Crmoves = document.getElementById('moves');
+			Crmoves.value = parseInt(Crmoves.value) + 1;
+			if (Crhealth.value == 0){
+				alert("You exploded! GAME OVER");
+			}
+			easyGrid[plrposR][plrposC-1] = "☻";
+			document.getElementById(plrposR + "-" + (plrposC-1)).innerHTML = "☻";
+		}
+		if (easyGrid[plrposR][plrposC-1] = "[ ]"){
+			Crmoves = document.getElementById('moves');
+			Crmoves.value = parseInt(Crmoves.value) + 1;
+			easyGrid[plrposR][plrposC-1] = "☻";
+			document.getElementById(plrposR + "-" + (plrposC-1)).innerHTML = "☻";
+		}
+	}
+	plrposC -= 1
+}  
+
+</script>
+<body bgColor=DeepSkyBlue>
+<font size="+3">
+<center>
+<h1>Easy Mode</h1>
+<input onclick="Begin(easyGrid)" style="font-size : 40px;" type="button" id="begin" value="START!"><p></p>
+
+<b>LEVEL:</b>
+<input style="font-size : 20px;" type="text" disabled="disabled" id="level" value="0"><p></p>
+<b>Health:</b>
+<input style="font-size : 20px;" type="text" disabled="disabled" id="health" value="100"><p></p>
+<b>Moves:</b>
+<input style="font-size : 20px;" type="text" disabled="disabled" id="moves" value="0">
+  
+<table border = "9", cellspacing="0">
+<tr>
+<td id="0-0", align="center">0</td>
+<td id="0-1", align="center">0</td>
+<td id="0-2", align="center">0</td>
+<td id="0-3", align="center">0</td>
+<td id="0-4", align="center">0</td>
+</tr>
+<tr>
+<td id="1-0", align="center">0</td>
+<td id="1-1", align="center">0</td>
+<td id="1-2", align="center">0</td>
+<td id="1-3", align="center">0</td>
+<td id="1-4", align="center">0</td>
+</tr>
+<tr>
+<td id="2-0", align="center">0</td>
+<td id="2-1", align="center">0</td>
+<td id="2-2", align="center">0</td>
+<td id="2-3", align="center">0</td>
+<td id="2-4", align="center">0</td>
+</tr>
+<tr>
+<td id="3-0", align="center">0</td>
+<td id="3-1", align="center">0</td>
+<td id="3-2", align="center">0</td>
+<td id="3-3", align="center">0</td>
+<td id="3-4", align="center">0</td>
+</tr>
+<tr>
+<td id="4-0", align="center">0</td>
+<td id="4-1", align="center">0</td>
+<td id="4-2", align="center">0</td>
+<td id="4-3", align="center">0</td>
+<td id="4-4", align="center">0</td>
+</tr>
+</table>
+
+<input onclick="goWest()" style="font-size : 20px;" type="button" id="west" value="<">
+<input onclick="goNorth()" style="font-size : 20px;" type="button" id="north" value="^">
+<input onclick="goSouth()" style="font-size : 20px;" type="button" id="south" value="v">
+<input onclick="goEast()" style="font-size : 20px;" type="button" id="east" value=">">
+  
+ </center>
+</body>
+</html>
