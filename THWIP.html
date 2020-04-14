@@ -10,20 +10,13 @@
   	['*', '*', '*', '*', '*']];
 	var plrposR = 2;
 	var plrposC = 2;
-	
+
 function Begin(easyGrid){
   Crlevel = document.getElementById('level');
   Crlevel.value = parseInt(Crlevel.value) + 1;
   document.getElementById("health").innerHTML = 100;
   document.getElementById("moves").innerHTML = 0;
-  
-		
-	for (var p = 0; p < 5; p++) {
-	  for (var q = 0; q < 5; q++) {
-			document.getElementById(p + "-" + q).innerHTML = "*";
-			}
-		}
-  
+	
   for (var g = 0; g < 3; g++) {
 				var FPA = Math.floor(Math.random() * 5);
 				var FPB = Math.floor(Math.random() * 5);
@@ -51,24 +44,24 @@ function Begin(easyGrid){
 				document.getElementById(p + "-" + q).innerHTML = easyGrid[p][q];
 			}
 		}
-  
   button = document.getElementById('begin');
   button.parentNode.removeChild(button);
 }
 
-function goNorth(easyGrid, plrposR, plrposC){
-	if (plrposC == 0){
+function goNorth(easyGrid){
+	if (plrposR == 0){
 		alert("/!\ CAUTION: Do not leave the grid!");
 	} else{
 		easyGrid[plrposR][plrposC] = "[ ]";
 		document.getElementById(plrposR + "-" + plrposC).innerHTML = "[ ]";
-		if (easyGrid[plrposR][plrposC-1] = "[$]"){
-			document.getElementById(plrposR + "-" + (plrposC-1)).innerHTML = "[$]";
+		if (easyGrid[plrposR-1][plrposC] == "[$]"){
+			document.getElementById((plrposR-1) + "-" + plrposC).innerHTML = "[$]";
 			Crmoves = document.getElementById('moves');
 			Crmoves.value = parseInt(Crmoves.value) + 1;
 			alert("Treasure Found! Level Complete!");
+			//Begin(easyGrid);
 		}
-		if (easyGrid[plrposR][plrposC-1] = "*"){
+		if (easyGrid[plrposR-1][plrposC] == "*"){
 			Crhealth = document.getElementById('health');
   		Crhealth.value = parseInt(Crhealth.value) - 5;
 			Crmoves = document.getElementById('moves');
@@ -76,18 +69,18 @@ function goNorth(easyGrid, plrposR, plrposC){
 			if (Crhealth.value == 0){
 				alert("You exploded! GAME OVER");
 			}
-			easyGrid[plrposR][plrposC-1] = "☻";
-			document.getElementById(plrposR + "-" + (plrposC-1)).innerHTML = "☻";
+			easyGrid[plrposR-1][plrposC] = "☻";
+			document.getElementById((plrposR-1) + "-" + plrposC).innerHTML = "☻";
 		}
-		if (easyGrid[plrposR][plrposC-1] = "[ ]"){
+		if (easyGrid[plrposR-1][plrposC] == "[ ]"){
 			Crmoves = document.getElementById('moves');
 			Crmoves.value = parseInt(Crmoves.value) + 1;
-			easyGrid[plrposR][plrposC-1] = "☻";
-			document.getElementById(plrposR + "-" + (plrposC-1)).innerHTML = "☻";
+			easyGrid[plrposR-1][plrposC] = "☻";
+			document.getElementById((plrposR-1) + "-" + plrposC).innerHTML = "☻";
 		}
 	}
 	plrposC -= 1
-}  
+}
 
 </script>
 <body bgColor=DeepSkyBlue>
@@ -141,10 +134,10 @@ function goNorth(easyGrid, plrposR, plrposC){
 </tr>
 </table>
 
-<input onclick="goWest()" style="font-size : 20px;" type="button" id="west" value="<">
-<input onclick="goNorth()" style="font-size : 20px;" type="button" id="north" value="^">
-<input onclick="goSouth()" style="font-size : 20px;" type="button" id="south" value="v">
-<input onclick="goEast()" style="font-size : 20px;" type="button" id="east" value=">">
+<input onclick="goWest(easyGrid)" style="font-size : 20px;" type="button" id="west" value="←">
+<input onclick="goNorth(easyGrid)" style="font-size : 20px;" type="button" id="north" value="↑">
+<input onclick="goSouth(easyGrid)" style="font-size : 20px;" type="button" id="south" value="↓">
+<input onclick="goEast(easyGrid)" style="font-size : 20px;" type="button" id="east" value="→">
   
  </center>
 </body>
