@@ -9,8 +9,7 @@
 <body>
 <div class="loginbox"> <img src="https://lh3.googleusercontent.com/BIpeBa7JA4lhYlluvwBc0RnLbMInczIQ47nBEyM_SJ9KP9xBvoL_FLh-Kusx-_8JfF3HIl5lyZc_-ip4dS4nKOW0d9Wyp8UmbVq-9OdklW0hSYD-LvWM4jn_ZHgryRh164uPnx-f=s200-p-k" class="avatar" alt = "avatar logo"/>
   <h1>Create Account</h1>
-  <form>
-  <form method="post" action="connect.php">
+  <form method="post" action="register.php">
     <p>Username</p>
     <input type="text" name="username" placeholder="Enter Username" required>
     <p>Password</p>
@@ -21,7 +20,7 @@
     <input type="text" name="last_Name" placeholder="Enter Last Name" required>
     <p>Email</p>
     <input type="text" name="email" placeholder="Enter Email" required>
-    <input type="submit" name="create_account" value="Create Account">
+    <button type="submit" name="create_account" class="btn"> Create Account</button>
     <a href="login.php">Already have an account?</a>
   </form>
   </form>
@@ -54,7 +53,7 @@ $sql = "INSERT INTO TreasureHuntUsers (username, username_Password, first_Name, 
 if(mysqli_query($conn, $sql)){
     echo "Record added successfully.";
 } else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+  //  echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
 }
  
 mysqli_close($conn);
