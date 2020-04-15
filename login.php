@@ -1,5 +1,4 @@
 
-<!doctype html>
 <html>
 <head>
 <title>Login</title>
@@ -11,9 +10,9 @@
     <p>Username</p>
     <input type="text" name="username" placeholder="Enter Username" required>
     <p>Password</p>
-    <input type="password" name="password" placeholder="Enter Password" required>
-    <input type="submit" name="" value="Login">
-    <a href="register.html">Create account</a>
+    <input type="password" name="username_Password" placeholder="Enter Password" required>
+    <input type="submit" name="login" value="Login">
+    <a href="register.php">Create account</a>
   </form>
 </div>
 </body>
