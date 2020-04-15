@@ -18,7 +18,7 @@
         <li><a href="#"><i class="zmdi zmdi-account-circle"></i>My Profile Info </a></li>
         <li><a href="#"><i class="zmdi zmdi-settings"></i>Settings</a></li>
         <li><a href="#"><i class="zmdi zmdi-info-outline"></i>Privacy</a></li>
-        <li><a href="#"><i class="zmdi zmdi-sign-in"></i>Logout</a></li>
+        <li><a href="login.php"><i class="zmdi zmdi-sign-in"></i>Logout</a></li>
         <section>
             <header><a href="#">Get In Touch:</a></header>
         </section>
