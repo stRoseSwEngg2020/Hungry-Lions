@@ -14,10 +14,10 @@
         <ul class="nav">
         <li><a href="homepage.php"><i class="zmdi zmdi-view-dashboard"></i>Dashboard</a></li>
         <li><a href="playGame.html"><i class="zmdi zmdi-play"></i>Play Treasure Hunt Game</a></li>
-        <li><a href="#"><i class="zmdi zmdi-format-list-numbered"></i>My Scores</a></li>
-        <li><a href="#"><i class="zmdi zmdi-account-circle"></i>My Profile Info </a></li>
-        <li><a href="#"><i class="zmdi zmdi-settings"></i>Settings</a></li>
-        <li><a href="#"><i class="zmdi zmdi-info-outline"></i>Privacy</a></li>
+        <li><a href="comingSoon.html"><i class="zmdi zmdi-format-list-numbered"></i>My Scores</a></li>
+        <li><a href="comingSoon.html"><i class="zmdi zmdi-account-circle"></i>My Profile Info </a></li>
+        <li><a href="comingSoon.html"><i class="zmdi zmdi-settings"></i>Settings</a></li>
+        <li><a href="comingSoon.html"><i class="zmdi zmdi-info-outline"></i>Privacy</a></li>
         <li><a href="login.php"><i class="zmdi zmdi-sign-in"></i>Logout</a></li>
         <section>
             <header><a href="#">Get In Touch:</a></header>
@@ -38,10 +38,10 @@
         <nav class="navbar navbar-default">
         <div class="container-fluid">
             <h1>Treasure Hunt Game</h1>
-            <ul class="nav navbar-nav navbar-right">
+            <!-- <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><i class="zmdi zmdi-notifications text-danger"></i></a></li>
             <li><a href="#"> User</a></li>
-            </ul>
+            </ul> -->
         </div>
         </nav>
         <div class="container-fluid">
@@ -97,7 +97,7 @@
                             $temp_score = $row['score'];
                             endwhile; ?>
                         </table>
-                    <?php endif; 
+                    <?php endif;
                 }?>
                 <?php
                 if (isset($_GET['Medium']))
