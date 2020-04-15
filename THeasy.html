@@ -33,8 +33,8 @@ function Begin(easyGrid){
         easyGrid[FPA+1][FPB+1] = '[ ]';
 			}
   
-  easyGrid[2][2] = "☻";
-  document.getElementById("2-2").innerHTML = "☻";
+  easyGrid[2][2] = ":)";
+  document.getElementById("2-2").innerHTML = ":)";
   
   var goodPlace = false;
 		while (goodPlace == false) {
@@ -49,7 +49,7 @@ function Begin(easyGrid){
   
   for (var p = 0; p < 5; p++) {
 	  for (var q = 0; q < 5; q++) {
-      if (easyGrid[p][q] == "☻" || easyGrid[p][q] == "[ ]"){
+      if (easyGrid[p][q] == ":)" || easyGrid[p][q] == "[ ]"){
           document.getElementById(p + "-" + q).innerHTML = easyGrid[p][q];
         } else {
           document.getElementById(p + "-" + q).innerHTML = "?";
@@ -92,14 +92,14 @@ function goNorth(easyGrid){
 				document.getElementById('south').disabled = "disabled";
 				document.getElementById('east').disabled = "disabled";
 			}
-			easyGrid[plrposR-1][plrposC] = "☻";
-			document.getElementById((plrposR-1) + "-" + plrposC).innerHTML = "☻";
+			easyGrid[plrposR-1][plrposC] = ":)";
+			document.getElementById((plrposR-1) + "-" + plrposC).innerHTML = ":)";
 		}
 		if (easyGrid[plrposR-1][plrposC] == "[ ]"){
 			Crmoves = document.getElementById('moves');
 			Crmoves.value = parseInt(Crmoves.value) + 1;
-			easyGrid[plrposR-1][plrposC] = "☻";
-			document.getElementById((plrposR-1) + "-" + plrposC).innerHTML = "☻";
+			easyGrid[plrposR-1][plrposC] = ":)";
+			document.getElementById((plrposR-1) + "-" + plrposC).innerHTML = ":)";
 		}
     plrposR -= 1
 	}
@@ -133,14 +133,14 @@ function goSouth(easyGrid){
 				document.getElementById('south').disabled = "disabled";
 				document.getElementById('east').disabled = "disabled";
 			}
-			easyGrid[plrposR+1][plrposC] = "☻";
-			document.getElementById((plrposR+1) + "-" + plrposC).innerHTML = "☻";
+			easyGrid[plrposR+1][plrposC] = ":)";
+			document.getElementById((plrposR+1) + "-" + plrposC).innerHTML = ":)";
 		}
 		if (easyGrid[plrposR+1][plrposC] == "[ ]"){
 			Crmoves = document.getElementById('moves');
 			Crmoves.value = parseInt(Crmoves.value) + 1;
-			easyGrid[plrposR+1][plrposC] = "☻";
-			document.getElementById((plrposR+1) + "-" + plrposC).innerHTML = "☻";
+			easyGrid[plrposR+1][plrposC] = ":)";
+			document.getElementById((plrposR+1) + "-" + plrposC).innerHTML = ":)";
 		}
     plrposR += 1
 	}
@@ -174,14 +174,14 @@ function goWest(easyGrid){
 				document.getElementById('south').disabled = "disabled";
 				document.getElementById('east').disabled = "disabled";
 			}
-			easyGrid[plrposR][plrposC-1] = "☻";
-			document.getElementById(plrposR + "-" + (plrposC-1)).innerHTML = "☻";
+			easyGrid[plrposR][plrposC-1] = ":)";
+			document.getElementById(plrposR + "-" + (plrposC-1)).innerHTML = ":)";
 		}
 		if (easyGrid[plrposR][plrposC-1] == "[ ]"){
 			Crmoves = document.getElementById('moves');
 			Crmoves.value = parseInt(Crmoves.value) + 1;
-			easyGrid[plrposR][plrposC-1] = "☻";
-			document.getElementById(plrposR + "-" + (plrposC-1)).innerHTML = "☻";
+			easyGrid[plrposR][plrposC-1] = ":)";
+			document.getElementById(plrposR + "-" + (plrposC-1)).innerHTML = ":)";
 		}
     plrposC -= 1
 	}
@@ -215,14 +215,14 @@ function goEast(easyGrid){
 				document.getElementById('south').disabled = "disabled";
 				document.getElementById('east').disabled = "disabled";
 			}
-			easyGrid[plrposR][plrposC+1] = "☻";
-			document.getElementById(plrposR + "-" + (plrposC+1)).innerHTML = "☻";
+			easyGrid[plrposR][plrposC+1] = ":)";
+			document.getElementById(plrposR + "-" + (plrposC+1)).innerHTML = ":)";
 		}
 		if (easyGrid[plrposR][plrposC+1] == "[ ]"){
 			Crmoves = document.getElementById('moves');
 			Crmoves.value = parseInt(Crmoves.value) + 1;
-			easyGrid[plrposR][plrposC+1] = "☻";
-			document.getElementById(plrposR + "-" + (plrposC+1)).innerHTML = "☻";
+			easyGrid[plrposR][plrposC+1] = ":)";
+			document.getElementById(plrposR + "-" + (plrposC+1)).innerHTML = ":)";
 		}
     plrposC += 1
 	}
@@ -307,10 +307,10 @@ function QUIT(){
 </tr>
 </table>
 	
-<input onclick="goWest(easyGrid)" style="font-size : 20px;" type="button" id="west" value="←" disabled="disabled">
-<input onclick="goNorth(easyGrid)" style="font-size : 20px;" type="button" id="north" value="↑" disabled="disabled">
-<input onclick="goSouth(easyGrid)" style="font-size : 20px;" type="button" id="south" value="↓" disabled="disabled">
-<input onclick="goEast(easyGrid)" style="font-size : 20px;" type="button" id="east" value="→" disabled="disabled"><p></p>
+<input onclick="goWest(easyGrid)" style="font-size : 20px;" type="button" id="west" value="<" disabled="disabled">
+<input onclick="goNorth(easyGrid)" style="font-size : 20px;" type="button" id="north" value="^" disabled="disabled">
+<input onclick="goSouth(easyGrid)" style="font-size : 20px;" type="button" id="south" value="v" disabled="disabled">
+<input onclick="goEast(easyGrid)" style="font-size : 20px;" type="button" id="east" value=">" disabled="disabled"><p></p>
 <b>Score:</b>
 <input style="font-size : 20px;" type="text" disabled="disabled" id="score" value="0">
 <input onclick="QUIT()" style="font-size : 50px; color: blue;" type="button" id="quit" value="Quit and Upload Score">
