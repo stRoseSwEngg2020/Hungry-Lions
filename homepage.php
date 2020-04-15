@@ -14,7 +14,7 @@
         <ul class="nav">
         <li><a href="homepage.php"><i class="zmdi zmdi-view-dashboard"></i>Dashboard</a></li>
         <li><a href="playGame.html"><i class="zmdi zmdi-play"></i>Play Treasure Hunt Game</a></li>
-        <li><a href="comingSoon.html"><i class="zmdi zmdi-format-list-numbered"></i>My Scores</a></li>
+        <li><a href="myScores.php"><i class="zmdi zmdi-format-list-numbered"></i>My Scores</a></li>
         <li><a href="comingSoon.html"><i class="zmdi zmdi-account-circle"></i>My Profile Info </a></li>
         <li><a href="comingSoon.html"><i class="zmdi zmdi-settings"></i>Settings</a></li>
         <li><a href="comingSoon.html"><i class="zmdi zmdi-info-outline"></i>Privacy</a></li>
