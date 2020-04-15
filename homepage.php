@@ -61,10 +61,10 @@
                 function easyL()
                 {
                     echo 'Easy Difficulty';
-                    $databaseName = "HungryLionStudios";
-                    $hostname = "hlsthp.ckfkbibakfnp.us-east-1.rds.amazonaws.com:3306";
-                    $user = "root";
-                    $password = "737262580";
+                    $databaseName = "HungryLionsSoftwareEngineProject";
+                    $hostname = "localhost";
+                    $user = "yolbarsovi677";
+                    $password = "";
 
                     $conn = mysqli_connect($hostname, $user, $password, $databaseName);
 
@@ -106,11 +106,10 @@
 
                 function mediumL()
                 {
-                    echo 'Medium Difficulty';
-                    $databaseName = "HungryLionStudios";
-                    $hostname = "hlsthp.ckfkbibakfnp.us-east-1.rds.amazonaws.com:3306";
-                    $user = "root";
-                    $password = "737262580";
+                    $databaseName = "HungryLionsSoftwareEngineProject";
+                    $hostname = "localhost";
+                    $user = "yolbarsovi677";
+                    $password = "";
 
                     $conn = mysqli_connect($hostname, $user, $password, $databaseName);
 
@@ -153,10 +152,10 @@
                 function hardL()
                 {
                     echo 'Hard Difficulty';
-                    $databaseName = "HungryLionStudios";
-                    $hostname = "hlsthp.ckfkbibakfnp.us-east-1.rds.amazonaws.com:3306";
-                    $user = "root";
-                    $password = "737262580";
+                    $databaseName = "HungryLionsSoftwareEngineProject";
+                    $hostname = "localhost";
+                    $user = "yolbarsovi677";
+                    $password = "";
 
                     $conn = mysqli_connect($hostname, $user, $password, $databaseName);
 
