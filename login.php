@@ -6,7 +6,7 @@
 <body>
 <div class="loginbox"> <img src="https://lh3.googleusercontent.com/BIpeBa7JA4lhYlluvwBc0RnLbMInczIQ47nBEyM_SJ9KP9xBvoL_FLh-Kusx-_8JfF3HIl5lyZc_-ip4dS4nKOW0d9Wyp8UmbVq-9OdklW0hSYD-LvWM4jn_ZHgryRh164uPnx-f=s200-p-k" class="avatar" alt = "avatar logo"/>
   <h1>Login</h1>
-  <form action = "process.php" method="post" name="login"
+  <form action = "homepage.php" method="post" name="login"
     <p>Username</p>
     <input type="text" id="username" placeholder="Enter Username" required>
     <p>Password</p>
