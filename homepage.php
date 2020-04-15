@@ -107,6 +107,7 @@
 
                 function mediumL()
                 {
+                    echo "Medium Difficulty";
                     $databaseName = "HungryLionsSoftwareEngineProject";
                     $hostname = "localhost";
                     $user = "yolbarsovi677";
