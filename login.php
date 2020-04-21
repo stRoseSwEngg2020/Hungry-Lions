@@ -1,6 +1,15 @@
 <html>
 <head>
 <title>Login</title>
+<script>
+function makeCookie() {
+  var userName = document.getElementById('Uname').value;
+  document.cookie = "CKusername=" + userName + "; path=/;";
+  var userPass = document.getElementById('UPass').value;
+  document.cookie = "CKpassword=" + userPass + "; path=/;";
+  //document.cookie = "UserId=" + [user's ID number] + "; path=/;";
+}  
+</script>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -8,14 +17,22 @@
   <h1>Login</h1>
   <form action = "login.php" method="post" name="login">
     <p>Username</p>
+<<<<<<< HEAD
     <input type="text" name="username" placeholder="Enter Username" required>
     <p>Password</p>
     <input type="password" name="username_Password" placeholder="Enter Password" required>
     <input type="submit" name="login">
+=======
+    <input id="Uname" type="text" name="username" placeholder="Enter Username" required>
+    <p>Password</p>
+    <input id="Upass" type="password" name="username_Password" placeholder="Enter Password" required>
+    <input type="submit" name="login" onclick="makeCookie()">
+>>>>>>> 44eed3a1536ba4cb09283c9c01875617fc1650de
     <a href="register.php">Create account</a>
   </form>
 </div>
 </body>
+<<<<<<< HEAD
 <?php
 $servername = "localhost";
 $username = "yolbarsovi677";
@@ -42,3 +59,6 @@ if ( isset( $_POST[ 'login' ] ) ) {
 }
 ?>
 </html>
+=======
+</html>
+>>>>>>> 44eed3a1536ba4cb09283c9c01875617fc1650de
