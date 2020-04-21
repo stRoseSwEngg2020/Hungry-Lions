@@ -252,6 +252,16 @@ function Victory(){
 }
   
 function QUIT(){
+  	var user = getCookie("CKusername");
+  	var pass = getCookie("CKpassword");
+  	if (user != "") {
+    	alert("Now Submitting score Score");
+    	//code for inserting score to database goes here
+    	//The program should check if the player submitted a score to the leaderboard
+    	//already, if so, update the score with the larger score, if not, insert a new row.
+  	} else {
+    	alert("error in gathering cookies, we're sorry!");
+  }
 	window.location.href = './homepage.php'
 }
 	
