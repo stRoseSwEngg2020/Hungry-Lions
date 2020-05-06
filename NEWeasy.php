@@ -179,6 +179,7 @@ function QUIT(){
 
 			mysqli_stmt_close($query);
 			mysqli_close($conn);
+	
 		?>
     	//code for inserting score to database goes here
     	//The program should check if the player submitted a score to the leaderboard
