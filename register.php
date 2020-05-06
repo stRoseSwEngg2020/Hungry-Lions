@@ -20,7 +20,7 @@
     <input type="text" name="last_Name" placeholder="Enter Last Name" required>
     <p>Email</p>
     <input type="text" name="email" placeholder="Enter Email" required>
-    <button type="submit" name="create_account" class="btn"> Create Account</button>
+    <Gree type="submit" name="create_account" class="btn"> Create Account</button>
     <a href="login.php">Already have an account?</a>
   </form>
   </form>
