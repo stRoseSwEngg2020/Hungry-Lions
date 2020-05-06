@@ -156,7 +156,7 @@ function Victory(){
   
 function QUIT(){
 	alert("Submitting score...");
-  	var SCORE = document.getElementById('score');
+  	var Score = document.getElementById('score');
 	<?php
 	if (isset($_GET['username'])){
 		$databaseName = "HungryLionsSoftwareEngineProject";
@@ -170,7 +170,6 @@ function QUIT(){
 		$score= $_POST["Score"];
 		if (!$conn){
 			die("Connection failed: " . mysqli_connect_error());
-			alert("Connection error! Please try again later!");
 		}
 			$query = "INSERT INTO EasyScores(username, score) VALUES("+$username+", "+$score+")";
 			mysqli_stmt_bind_param($query, $score, $username);
