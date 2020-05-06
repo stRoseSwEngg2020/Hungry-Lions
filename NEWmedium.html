@@ -156,15 +156,35 @@ function Victory(){
 }
   
 function QUIT(){
+	alert("Now submitting score...");
   	var user = getCookie("CKusername");
   	var pass = getCookie("CKpassword");
-  	if (user != "") {
-    	alert("Now Submitting score Score");
-    	//code for inserting score to database goes here
-    	//The program should check if the player submitted a score to the leaderboard
-    	//already, if so, update the score with the larger score, if not, insert a new row.
+  	var SCORE = document.getElementById('score');
+  	if (user != null) {
+		<?php
+			$databaseName = "HungryLionsSoftwareEngineProject";
+            $hostname = "localhost";
+			$user = "yolbarsovi677";
+			$password = "";
+
+			$conn = mysqli_connect($hostname, $user, $password, $databaseName);
+
+			$username = $_POST["Username"];
+			$score= $_POST["Score"];
+			if (!$conn)
+			{
+				die("Connection failed: " . mysqli_connect_error());
+			}
+			$query = "INSERT INTO MediumScores(username, score) VALUES('+$username+', '+$score+')";
+			mysqli_stmt_bind_param($query, $score, $username);
+			mysqli_stmt_execute($query);
+
+			mysqli_stmt_close($query);
+			mysqli_close($conn);
+		?>
+		alert("Your score was uploaded to the leaderboard!");
   	} else {
-    	alert("error in gathering cookies, we're sorry!");
+    	alert("Error in submitting your score, we're sorry!");
   }
 	window.location.href = './homepage.php'
 }
