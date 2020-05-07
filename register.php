@@ -2,22 +2,7 @@
 <head>
   <title>register</title>
   <link rel="stylesheet" href="style1.css">
-  <script>
-    function makeCookie() {
-      var userName = document.getElementById('Uname').value;
-      document.cookie = "CKusername=" + userName + "; path=/;";
-      var userPass = document.getElementById('UPass').value;
-      document.cookie = "CKpassword=" + userPass + "; path=/;";
-      //document.cookie = "UserId=" + [user's ID number] + "; path=/;";
-      alert("hello");
-      window.location.href = 'login.php';
-    }  
-    function createAccount(){
-      window.location.href = './login.php';
-    }
-  </script>
 </head>
-
 <body>
   <div class="loginbox"> <img src="https://lh3.googleusercontent.com/BIpeBa7JA4lhYlluvwBc0RnLbMInczIQ47nBEyM_SJ9KP9xBvoL_FLh-Kusx-_8JfF3HIl5lyZc_-ip4dS4nKOW0d9Wyp8UmbVq-9OdklW0hSYD-LvWM4jn_ZHgryRh164uPnx-f=s200-p-k" class="avatar" alt = "avatar logo"/>
     <h1>Create Account</h1>
@@ -36,19 +21,14 @@
       <a href="login.php">Already have an account?</a>
     </form>
   </div>
-<br />
+  <br />
   <?php
-    // $servername = "localhost";
-    // $username = "yolbarsovi677";
-    // $password = "";
-    // $dbname = "HungryLionsSoftwareEngineProject";
-    $databaseName = "HungryLionStudios";
-    $hostname = "hlsthp.ckfkbibakfnp.us-east-1.rds.amazonaws.com:3306";
-    $user = "root";
-    $password = "737262580";
-
-    // $conn = mysqli_connect($servername, $username, $password, $dbname);
-    $conn = mysqli_connect($hostname, $user, $password, $databaseName);
+    $servername = "localhost";
+    $username = "yolbarsovi677";
+    $password = "";
+    $dbname = "HungryLionsSoftwareEngineProject";
+    
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
 
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());

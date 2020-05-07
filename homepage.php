@@ -40,14 +40,7 @@
             <h1>Treasure Hunt Game</h1>
             <<ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><i class="zmdi zmdi-notifications text-danger"></i></a></li>
-                <li><a href="#" id="?"><input onclick="stayLoggedIn()">User</a></li>
-                <script>
-                    function stayLoggedIn(){
-                        var user = getCookie("CKusername");
-                        var pass = getCookie("CKpassword");
-                        document.getelementbyid("?").innerHTML=user;
-                    }
-                </script>
+                <li><a href="#"><?php session_start();echo $_SESSION['username'];?></a></li>
             </ul>
         </div>
         </nav>
@@ -69,18 +62,13 @@
                 function easyL()
                 {
                     echo 'Easy Difficulty';
-                    // $databaseName = "HungryLionsSoftwareEngineProject";
-                    // $hostname = "localhost";
-                    // $user = "yolbarsovi677";
-                    // $password = "";
-
-                    // $conn = mysqli_connect($hostname, $user, $password, $databaseName);
-                    $databaseName = "HungryLionStudios";
-                    $hostname = "hlsthp.ckfkbibakfnp.us-east-1.rds.amazonaws.com:3306";
-                    $user = "root";
-                    $password = "737262580";
+                    $databaseName = "HungryLionsSoftwareEngineProject";
+                    $hostname = "localhost";
+                    $user = "yolbarsovi677";
+                    $password = "";
 
                     $conn = mysqli_connect($hostname, $user, $password, $databaseName);
+
 
                     if (!$conn)
                     {
@@ -121,16 +109,10 @@
                 function mediumL()
                 {
                     echo "Medium Difficulty";
-                    // $databaseName = "HungryLionsSoftwareEngineProject";
-                    // $hostname = "localhost";
-                    // $user = "yolbarsovi677";
-                    // $password = "";
-
-                    // $conn = mysqli_connect($hostname, $user, $password, $databaseName);
-                    $databaseName = "HungryLionStudios";
-                    $hostname = "hlsthp.ckfkbibakfnp.us-east-1.rds.amazonaws.com:3306";
-                    $user = "root";
-                    $password = "737262580";
+                    $databaseName = "HungryLionsSoftwareEngineProject";
+                    $hostname = "localhost";
+                    $user = "yolbarsovi677";
+                    $password = "";
 
                     $conn = mysqli_connect($hostname, $user, $password, $databaseName);
 
@@ -173,16 +155,10 @@
                 function hardL()
                 {
                     echo 'Hard Difficulty';
-                    // $databaseName = "HungryLionsSoftwareEngineProject";
-                    // $hostname = "localhost";
-                    // $user = "yolbarsovi677";
-                    // $password = "";
-
-                    // $conn = mysqli_connect($hostname, $user, $password, $databaseName);
-                    $databaseName = "HungryLionStudios";
-                    $hostname = "hlsthp.ckfkbibakfnp.us-east-1.rds.amazonaws.com:3306";
-                    $user = "root";
-                    $password = "737262580";
+                    $databaseName = "HungryLionsSoftwareEngineProject";
+                    $hostname = "localhost";
+                    $user = "yolbarsovi677";
+                    $password = "";
 
                     $conn = mysqli_connect($hostname, $user, $password, $databaseName);
 
